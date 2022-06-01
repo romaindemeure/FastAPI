@@ -14,6 +14,7 @@ BOOKS = {
 }
 
 
+# get it's for see all books at "/" with optional parameter "skip_book"
 @app.get("/")
 async def read_all_books(skip_book: str | None = None):
     if skip_book:
@@ -23,11 +24,13 @@ async def read_all_books(skip_book: str | None = None):
     return BOOKS
 
 
+# get it's for see one book with the book name at "/{book_name}"
 @app.get("/{book_name}")
 async def read_books(book_name: str):
     return BOOKS[book_name]
 
 
+# post it's for create book with book_title and book_author, the book_name id it's automatically create
 @app.post("/")
 async def create_book(book_title, book_author):
     current_book_id = 0
@@ -42,6 +45,7 @@ async def create_book(book_title, book_author):
     return BOOKS[f'book_{current_book_id + 1}']
 
 
+# put it's for update book_title and book_author with book_name id
 @app.put("/{book_name}")
 async def update_book(book_name: str, book_title: str, book_author: str):
     book_information = {'title': book_title, 'author': book_author}
@@ -49,6 +53,7 @@ async def update_book(book_name: str, book_title: str, book_author: str):
     return book_information
 
 
+# delete it's for delete data with the book_name id
 @app.delete("/{book_name}")
 async def delete_book(book_name):
     del BOOKS[book_name]
