@@ -1,9 +1,9 @@
 from enum import Enum
-from typing import Optional
 
 from fastapi import FastAPI
 
 app = FastAPI()
+
 
 BOOKS = {
     "book_1": {"title": "Title One", "author": "Author One"},
@@ -45,7 +45,7 @@ async def create_book(book_title, book_author):
     return BOOKS[f'book_{current_book_id + 1}']
 
 
-# put it's for update book_title and book_author with book_name id
+# put it's for update book_title and book_author with specific book_name id
 @app.put("/{book_name}")
 async def update_book(book_name: str, book_title: str, book_author: str):
     book_information = {'title': book_title, 'author': book_author}
