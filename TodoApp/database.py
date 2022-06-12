@@ -1,3 +1,6 @@
+# This file database.py it's used for create a connection on our database
+
+# We need all these imports to make it work
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
